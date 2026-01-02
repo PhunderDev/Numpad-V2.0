@@ -1,0 +1,81 @@
+{
+  "name": "phunder-flow",
+  "version": "0.0.0",
+  "main": "main.js",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "electronStart": "electron .",
+    "build": "ng build --configuration production --base-href ./ && electron-builder",
+    "buildTest": "ng build --configuration development --base-href ./",
+    "electron": "npm run build && electron .",
+    "electronTest": "npm run buildTest && electron ."
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^19.1.0",
+    "@angular/common": "^19.1.0",
+    "@angular/compiler": "^19.1.0",
+    "@angular/core": "^19.1.0",
+    "@angular/forms": "^19.1.0",
+    "@angular/platform-browser": "^19.1.0",
+    "@angular/platform-browser-dynamic": "^19.1.0",
+    "@angular/router": "^19.1.0",
+    "ngx-color-picker": "^20.1.1",
+    "node-hid": "^3.2.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0",
+    "usb": "^1.9.2",
+    "zone.js": "~0.15.0"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^19.1.8",
+    "@angular/cli": "^19.1.8",
+    "@angular/compiler-cli": "^19.1.0",
+    "@types/jasmine": "~5.1.0",
+    "@types/usb": "^2.0.4",
+    "electron": "^38.1.2",
+    "electron-builder": "^26.0.12",
+    "jasmine-core": "~5.5.0",
+    "karma": "~6.4.0",
+    "karma-chrome-launcher": "~3.2.0",
+    "karma-coverage": "~2.2.0",
+    "karma-jasmine": "~5.1.0",
+    "karma-jasmine-html-reporter": "~2.1.0",
+    "typescript": "~5.7.2"
+  },
+  "build": {
+    "appId": "com.phunderdev.phunderflow",
+    "productName": "PhunderFlow",
+    "directories": {
+      "output": "dist"
+    },
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/icon.ico"
+    },
+    "files": [
+      "**/*",
+      "!**/node_modules/*/{CHANGELOG.md,README.md,README,readme.md,readme}",
+      "!**/node_modules/*/{test,__tests__,tests,powered-test,example,examples}",
+      "!**/node_modules/*.d.ts",
+      "!**/node_modules/.bin",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/thumbs.db",
+      "!**/{.idea,.vs,.vscode,.history}",
+      "dist/phunder-flow/browser/**/*"
+    ]
+  }
+}

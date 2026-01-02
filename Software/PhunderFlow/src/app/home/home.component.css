@@ -1,0 +1,53 @@
+div#BG {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    box-sizing: border-box;
+    padding: 60px;
+    overflow-y: auto;
+}
+
+a.DevicePreview {
+    height: calc(50% - 10px);
+    background-color: var(--ElementBackground);
+    border-radius: var(--AccentBorderRadius);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+a.DevicePreview:hover {
+    filter: brightness(0.9);
+    height: 50%;
+}
+
+a.DevicePreview>img {
+    height: 100%;
+    transition: all 0.2s linear;
+}
+
+
+a.DevicePreview.Small {
+    aspect-ratio: 1/1;
+}
+
+a.DevicePreview.Medium {
+    aspect-ratio: 2/1;
+}
+
+a.DevicePreview.Big {
+    aspect-ratio: 3/1;
+}
+
+h1 {
+    color: white;
+}

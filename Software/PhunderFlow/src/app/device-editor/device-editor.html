@@ -1,0 +1,147 @@
+<div id="Main">
+    <section id="Visualization">
+        <div id="VisualizationContainer">
+            @if(CurrentlyEditedDevice.Transparent == undefined) {<img [src]="''" id="NumpadVisualization" draggable="false">}
+            @else {<img [src]="'media/devices/' + CurrentlyEditedDevice.DisplayName + '/' + CurrentlyEditedDevice.Transparent" id="NumpadVisualization" draggable="false">}
+            <div id="LEDDiv">
+                @for (Row of LoadedVisualizationConfig.Rows; track $index; let RowIndex = $index) {
+                    <div
+                        class="Row"
+                        [style.height.%]="LoadedVisualizationConfig.DefaultKeySize"
+                        [style.margin-left.%]="Row.Margin_X + LoadedVisualizationConfig.Margin_X"
+                        [style.margin-top.%]="Row.SumMarginY + LoadedVisualizationConfig.Margin_Y"
+                    >
+                        @for (Key of LoadedVisualizationConfig.Rows[RowIndex].Keys; track $index; let KeyIndex = $index) {
+                            <div
+                                
+                                [ngClass]="{ 'Key': true, 'Selected':IsKeySelected(KeyIndex, RowIndex)}"
+                                [style.background-color]="`hsl(${Key.LEDSettings.CurrentColor.H}, ${Key.LEDSettings.CurrentColor.S}%, ${Key.LEDSettings.CurrentColor.L}%)`"
+                                [style.width.%]="Key.Size_X * LoadedVisualizationConfig.DefaultKeySize"
+                                [style.aspect-ratio]="Key.Size_X / Key.Size_Y"
+                                [style.margin-left.%]="Key.SumMarginX"
+                                (click)="SelectKey(KeyIndex, RowIndex, $event)"
+                            >
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+            <div id="LEDShadowDiv">
+            </div>
+        </div>
+    </section>
+    
+    <section id="Settings">
+
+        @if(CurrentlySelectedKey.Col != -1 || CurrentlySelectedKey.Row != -1) {
+            <button id="DeselectKey" (click)="SelectKey(-1, -1, $event)">
+                <img src="media/icons/SmallArrowLeft.svg" alt="">
+            </button>
+        }
+
+        <div id="SettingsStateButtons">
+            @if(CurrentlyEditedDevice.RGBControl) { <button (click)="SetSettingsState(0)" [ngClass]="{'Active':CurrentSettingsState == 0}">Lighting</button> }
+            @if(CurrentlyEditedDevice.KeybindControl) { <button (click)="SetSettingsState(1)" [ngClass]="{'Active':CurrentSettingsState == 1}">Keybinds</button> }
+            <button (click)="SetSettingsState(2)" [ngClass]="{'Active':CurrentSettingsState == 2}">Settings</button>
+        </div>
+        @if(CurrentSettingsState == 0) {
+
+            <div class="SelectField">
+                <h2>Mode</h2>
+                <select name="" id="" [ngModel]="CurrentlySelectedLEDSettings.Mode" (ngModelChange)="SetMode($event); InitVisualizationLighting();">
+                    @for (Mode of LightingModes; track $index; let LightingModeIndex = $index) {
+                        @if(LightingModeIndex > 0 || (CurrentlySelectedKey.Col != -1 && CurrentlySelectedKey.Row != -1 && LightingModeIndex == 0)) {<option [value]="Mode.ID">{{Mode.Name}}</option>}
+                    }
+                </select>
+            </div>
+
+
+            @if(CurrentlySelectedLEDSettings.Mode == 1 || (CurrentlySelectedLEDSettings.Mode == -1 && GlobalLEDSettings.Mode == 1)) {
+                <hr>
+                <div id="ColorPicker">
+                    <app-color-picker (colorChange)="onColorChange($event)" [SelectedColor]="SelectedColor"></app-color-picker>
+                    <div id="ColorPickerValues">
+                        <label for="ColorH">H: </label>
+                        <input type="number" name="ColorH" id="ColorH" [defaultValue]="0" min="0" max="359" [ngModel]="SelectedColor.H" (ngModelChange)="ColorInputFieldChange($event, 0)">
+
+                        <label for="ColorS">S: </label>
+                        <input type="number" name="ColorS" id="ColorS" [defaultValue]="0" min="0" max="100" [ngModel]="SelectedColor.S" (ngModelChange)="ColorInputFieldChange($event, 1)">
+                    
+                        <label for="ColorL">L: </label>
+                        <input type="number" name="ColorL" id="ColorL" [defaultValue]="0" min="0" max="100" [ngModel]="SelectedColor.L" (ngModelChange)="ColorInputFieldChange($event, 2)">
+
+                        @if(CurrentlySelectedKey.Col != -1 && CurrentlySelectedKey.Row != -1) {
+                            <label for="ColorInherit">Inherit Color: </label>
+                            <input type="checkbox" name="ColorInherit" id="ColorInherit" [defaultValue]="0" [(ngModel)]="CurrentlySelectedLEDSettings.InheritColor" (ngModelChange)="onColorInheritanceChange()">
+                        }
+                    </div>
+                </div>
+
+            }
+
+
+            @if(CurrentlySelectedLEDSettings.Mode > 1 || (CurrentlySelectedLEDSettings.Mode == -1 && GlobalLEDSettings.Mode > 1)) {
+                <hr>
+                <div class="SliderField">
+                    <h2>Speed</h2>
+                    <app-gradient-slider class="Slider" type="range" name="" id="" [value]="CurrentlySelectedLEDSettings.Speed" [min]="CurrentlySelectedKey.Col == -1 && CurrentlySelectedKey.Row == -1 ? 0 : -1" [max]="10" [step]="1" (input)="OnSpeedSliderInput($event.target);"/>
+                    <input type="number" name="SpeedValue" id="SpeedValue" [defaultValue]="0" [min]="CurrentlySelectedKey.Col == -1 && CurrentlySelectedKey.Row == -1 ? 0 : -1" [max]="10" [(ngModel)]="CurrentlySelectedLEDSettings.Speed" (ngModelChange)="OnSpeedInput($event);">
+                </div>
+            }  
+
+            <hr>
+            <div class="SliderField">
+                <h2>Brightness</h2>
+                <app-gradient-slider class="Slider" type="range" name="" id="" [value]="CurrentlySelectedLEDSettings.Brightness" [min]="CurrentlySelectedKey.Col == -1 && CurrentlySelectedKey.Row == -1 ? 0 : -1" [max]="10" [step]="1" (input)="OnBrightnessSliderInput($event.target)"/>
+                <input type="number" name="BrightnessValue" id="BrightnessValue" [defaultValue]="0" [min]="CurrentlySelectedKey.Col == -1 && CurrentlySelectedKey.Row == -1 ? 0 : -1" [max]="10" [(ngModel)]="CurrentlySelectedLEDSettings.Brightness" (ngModelChange)="OnBrightnessInput($event);">
+            </div>
+
+
+            @if(CurrentlySelectedLEDSettings.Mode > 1 || (CurrentlySelectedLEDSettings.Mode == -1 && GlobalLEDSettings.Mode > 1)) {
+                <hr>
+                <div class="DirectionField">
+                    <h2>Direction</h2>
+                    <div id="DirectionButtons">
+                        <button id="DirectionUp" [ngClass]="{ 'Active': CurrentlySelectedLEDSettings.Direction == 1}" (click)="SetDirection(1); InitVisualizationLighting()">
+                            <img src="media/icons/SmallArrowUp.svg" alt="">
+                        </button>
+                        <button id="DirectionLeft" [ngClass]="{ 'Active': CurrentlySelectedLEDSettings.Direction == 0}" (click)="SetDirection(0); InitVisualizationLighting()">
+                            <img src="media/icons/SmallArrowLeft.svg" alt="">
+                        </button>
+                        
+                        @if(CurrentlySelectedKey.Col != -1 && CurrentlySelectedKey.Row != -1) {
+                            <button id="DirectionInherit" [ngClass]="{ 'Active': CurrentlySelectedLEDSettings.Direction == -1}" (click)="SetDirection(-1); InitVisualizationLighting()">
+                                <img src="media/icons/Circle.svg" alt="">
+                            </button>
+                        }
+                        
+                        <button id="DirectionRight" [ngClass]="{ 'Active': CurrentlySelectedLEDSettings.Direction == 2}" (click)="SetDirection(2); InitVisualizationLighting()">
+                            <img src="media/icons/SmallArrowRight.svg" alt="">
+                        </button>
+                        <button id="DirectionDown" [ngClass]="{ 'Active': CurrentlySelectedLEDSettings.Direction == 3}" (click)="SetDirection(3); InitVisualizationLighting()">
+                            <img src="media/icons/SmallArrowDown.svg" alt="">
+                        </button>
+                    </div>
+                </div>
+            }
+
+            <button id="ApplySettings" (click)="ApplyLEDSettingsToTheDevice()">
+                Apply
+            </button>
+
+        } @else if(CurrentSettingsState == 1) {
+
+            <div class="EmptySettings">
+                <h1>Coming Soon?</h1>
+            </div>
+
+
+        } @else if(CurrentSettingsState == 2) {
+
+            <div class="EmptySettings">
+                <h1>Coming Soon?</h1>
+            </div>
+
+        }
+    </section>
+</div>

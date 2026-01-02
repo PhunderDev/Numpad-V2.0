@@ -1,0 +1,29 @@
+<div id="Main">
+  <section id="Content">
+    <router-outlet />
+  </section>
+  <section id="Sidebar">
+    @for (Device of Devices; track $index) {
+      <a [routerLink]="'editor'" [queryParams]="{DeviceAddress:  Device.USBDetails.deviceAddress}" [ngClass]="{'Active': CurrentUrl == 'editor?DeviceAddress=' + Device.USBDetails.deviceAddress}">
+          <img [src]="'media/icons/devices/' + Device.Icon" alt="">
+      </a> 
+    }
+  </section>
+  <section id="Navbar">
+
+    <div id="DraggableSection"></div>
+
+    <button (click)="MinimizeApp()">
+      <img src="media/icons/Minimize.svg" alt="">
+    </button>
+
+    <button class="SmallerIcon" (click)="MaximizeApp()">
+      <img src="media/icons/RestoreWindow.svg" alt="">
+    </button>
+
+    <button (click)="CloseApp()">
+      <img src="media/icons/Close.svg" alt="">
+    </button>
+
+  </section>
+</div>

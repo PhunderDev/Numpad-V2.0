@@ -1,0 +1,21 @@
+<div id="BG">
+    @if(Devices.length == 0) {
+        <h1>No Devices Connected :(</h1>
+    }
+    @for (Device of Devices; track $index) {
+        <a [class]="['DevicePreview', Device.PreviewSize]" [routerLink]="'editor'" [queryParams]="{DeviceAddress:  Device.USBDetails.deviceAddress}">
+            <img [src]="'media/devices/' + Device.DisplayName + '/' + Device.Preview" alt="">
+        </a> 
+    }
+    <!--a class="DevicePreview Small" [routerLink]="'editor'">
+        <img src="media/devices/Numpad.png" alt="">
+    </a>
+    
+    <a class="DevicePreview Medium">
+        <img src="media/devices/TKL.png" alt="">
+    </a>
+    
+    <a class="DevicePreview Big">
+        <img src="media/devices/FullSize.png" alt="">
+    </a-->
+</div>

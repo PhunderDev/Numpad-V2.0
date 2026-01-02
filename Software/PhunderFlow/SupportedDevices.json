@@ -1,0 +1,14 @@
+[
+    {
+        "DisplayName": "PhunderDev Numpad V2",
+        "VID": 51966,
+        "PID": 16392,
+        "Icon": "Numpad.png",
+        "Preview": "Numpad.png",
+        "Transparent": "Numpad_Transparent.png",
+        "PreviewSize": "Small",
+        "RGBControl": true,
+        "KeybindControl": true,
+        "VisualizationConfig": "Numpad.json"
+    }
+]

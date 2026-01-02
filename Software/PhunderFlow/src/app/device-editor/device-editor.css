@@ -1,0 +1,343 @@
+div#Main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    --SettingsWidth: 400px;
+}
+
+section#Visualization {
+    width: calc(100% - var(--SettingsWidth));
+    height: 100%;
+    background: var(--BackgroundColor);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+div#VisualizationContainer {
+    display: inline-block;
+    position: relative;
+}
+
+div#VisualizationContainer > img#NumpadVisualization {
+    box-sizing: border-box;
+    max-height: calc(100vh - var(--NavbarHeight) - 20px);
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    position: relative;
+    z-index: 5;
+    pointer-events: none;
+}
+
+div#LEDDiv, div#LEDShadowDiv {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+}
+
+div.Row {
+    position: absolute;
+    width: 100%;
+}
+
+div.Key {
+    position: absolute;
+    z-index: 3;
+    pointer-events: auto;
+    cursor: pointer;
+}
+
+div.KeyShadow {
+    position: absolute;
+    z-index: 6;
+    pointer-events: none;
+    background: transparent;
+}
+
+div.Key:not(.Selected):hover {
+    filter: invert(1);
+}
+
+div.Key.Selected {
+    box-shadow: inset 0 0 7px 5px white;
+}
+
+
+
+
+
+
+
+
+section#Settings {
+    width: var(--SettingsWidth);
+    background: var(--SidebarColor);
+    position: relative;
+    z-index: 999;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 100px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    --SettingsStateHeight: 45px;
+    padding-top: var(--SettingsStateHeight);
+}
+
+div#SettingsStateButtons {
+    background: var(--SidebarColor);
+    height: var(--SettingsStateHeight);
+    width: var(--SettingsWidth);
+    position: fixed;
+    top: var(--NavbarHeight);
+    display: flex;
+    flex-direction: row;
+}
+
+div#SettingsStateButtons button {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    outline: none;
+    border: none;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s linear;
+}
+
+button#ApplySettings {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    height: var(--SettingsStateHeight);
+    aspect-ratio: 3/1;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: var(--AccentBorderRadius);
+    cursor: pointer;
+    color: white;
+}
+
+div#SettingsStateButtons button.Active, div#SettingsStateButtons button:hover {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+button#DeselectKey {
+    position: fixed;
+    top: var(--NavbarHeight);
+    right: var(--SettingsWidth);
+    height: var(--SettingsStateHeight);
+    aspect-ratio: 1/1;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: var(--SidebarColor);
+    border-radius: var(--AccentBorderRadius) 0 0 var(--AccentBorderRadius);
+    cursor: pointer;
+}
+
+button#DeselectKey img {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+
+
+hr {
+    background-color: #595959;
+    height: 1px;
+    min-height: 1px;
+    width: calc(100% - 100px);
+    border: none;
+}
+
+
+div#ColorPicker {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+}
+
+
+div#ColorPickerValues {
+    height: 100%;
+    width: 120px;
+    display: grid;
+    grid-template-columns: 40% 60%;
+    justify-content: right;
+    gap: 10px;
+    align-content: space-around;
+    --InputHeight: 30px;
+    color: white;
+}
+
+div#ColorPickerValues label {
+    text-align: right;
+    height: var(--InputHeight);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    font-weight: bold;
+}
+
+div#ColorPickerValues input, div.SliderField input[type="number"] {
+    text-align: center;
+    background-color: var(--ElementBackground);
+    height: var(--InputHeight);
+    border-radius: var(--AccentBorderRadius);
+    color: white;
+    border: none;
+}
+
+div#ColorPickerValues input::-webkit-outer-spin-button,
+div#ColorPickerValues input::-webkit-inner-spin-button,
+div.SliderField input[type="number"]::-webkit-outer-spin-button,
+div.SliderField input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+
+div.SliderField {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    height: 70px;
+    grid-template-columns: 200px 150px;
+    gap: 10px;
+    display: grid;
+    grid-template-areas: "Title Title" "Slider Value";
+    place-items: center;
+    color: white;
+}
+
+div.SliderField h2 {
+    grid-area: Title;
+}
+
+div.SliderField h3 {
+    grid-area: Value;
+    width: 100%;
+    text-align: center;
+    font-weight: 10;
+}
+
+div.SliderField input[type="number"] {
+    height: 30px;
+    width: 80px;
+    place-self: end;
+}
+
+div.SliderField .Slider {
+    grid-area: Slider;
+    width: 100%;
+}
+
+div.SelectField {
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    height: 70px;
+    gap: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+div.SelectField select {
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    background-color: var(--ElementBackground);
+    border-radius: var(--AccentBorderRadius);
+    color: white;
+    border: none;
+    font-weight: bold;
+}
+
+div.DirectionField {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+div.DirectionField div#DirectionButtons {
+    height: 160px;
+    width: 160px;
+    display: grid;
+    align-items: center;
+    grid-template-areas:"LeftUp Up RightUp" "Left Center Right" "LeftDown Down RightDown";
+    gap: 5px;
+}
+
+div.DirectionField button {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background-color: var(--ElementBackground);
+    box-sizing: border-box;
+}
+
+div.DirectionField button img {
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+div.DirectionField button.Active img {
+    filter: invert();
+}
+
+button#DirectionUp {
+    grid-area: Up;
+}
+
+button#DirectionLeft {
+    grid-area: Left;
+}
+
+button#DirectionInherit {
+    grid-area: Center;
+    padding: 15px;
+}
+
+button#DirectionRight {
+    grid-area: Right;
+}
+
+button#DirectionDown {
+    grid-area: Down;
+}
+
+div.EmptySettings {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    color: white;
+    text-align: center;
+}

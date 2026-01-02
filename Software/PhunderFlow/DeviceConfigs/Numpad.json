@@ -1,0 +1,281 @@
+{
+    "Margin_X":8,
+    "Margin_Y":7.8,
+    "Gap_X":0.5,
+    "Gap_Y":0.5,
+    "Center_X":2,
+    "Center_Y":2,
+    "DefaultKeySize":15.8,
+    "Rows":[
+        {
+            "Margin_X":0,
+            "Margin_Y":0,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                }
+            ]
+        },
+        {
+            "Margin_X":0,
+            "Margin_Y":3.3,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":3.1,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                }
+            ]
+        },
+        {
+            "Margin_X":0,
+            "Margin_Y":0,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":2,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":3.1,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                }
+            ]
+        },
+        {
+            "Margin_X":0,
+            "Margin_Y":0,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X": 19.4,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": 4,
+                    "FigurativePosY": -1
+                }
+            ]
+        },
+        {
+            "Margin_X":0,
+            "Margin_Y":0,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":2,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":3.1,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                }
+            ]
+        },
+        {
+            "Margin_X":0,
+            "Margin_Y":0,
+            "Keys":[
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":2.03,
+                    "Size_Y":1,
+                    "FigurativePosX": -1,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":0,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": 2,
+                    "FigurativePosY": -1
+                },
+                {
+                    "Margin_X":19.4,
+                    "Margin_Y":0,
+                    "SumMarginX":0,
+                    "Size_X":1,
+                    "Size_Y":1,
+                    "FigurativePosX": 4,
+                    "FigurativePosY": -1
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+:root {
+    --SidebarWidth: 70px;
+    --NavbarHeight: 40px;
+    --NavbarIconSize: 30px;
+
+
+    --AccentBorderRadius: 10px;
+    --UniversalBorderRadius: 20px;
+
+
+    --SidebarColor: #0b0d11;
+    --NavbarColor: var(--SidebarColor);
+    --SidebarIconsBackgorund: #181B21;
+    --BackgroundColor: radial-gradient(#383f4d, #0a0e14);/*radial-gradient(#1C212B, #0b0d11);*/
+    --ElementBackground: #1C212B;
+    --AccentGradientStart: #00ffff;
+    --AccentGradientEnd: #ff00ff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+body, html {
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--AccentBorderRadius);
+}
+
+img {
+    user-select: none;
+}

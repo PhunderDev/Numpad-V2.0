@@ -1,0 +1,101 @@
+div#Main {
+    display: grid;
+    height: 100vh;
+    grid-template-areas: "Sidebar Navbar" "Sidebar Content";
+    grid-template-columns: var(--SidebarWidth) calc(100% - var(--SidebarWidth));
+    grid-template-rows: var(--NavbarHeight) calc(100% - var(--NavbarHeight));
+    background-color: var(--NavbarColor);
+    border-radius: var(--AccentBorderRadius);
+}
+
+section {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+
+#Navbar {
+    grid-area: Navbar;
+    background-color: var(--NavbarColor);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    gap: 10px;
+    padding-right: 10px;
+}
+
+#Navbar>div#DraggableSection {
+    /* Make the navbar drag the window*/
+    -webkit-app-region: drag;
+    width: 100%;
+    height: 100%;
+}
+
+#Navbar button {
+    height: var(--NavbarIconSize);
+    aspect-ratio: 1/1;
+    background-color: transparent;
+    border: none;
+}
+
+#Navbar button.SmallerIcon {
+    height: calc(var(--NavbarIconSize) * 0.8);
+    margin-top: 5px;
+}
+
+#Navbar button:hover {
+    filter: brightness(0.5);
+}
+
+
+
+#Navbar button>img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+#Sidebar {
+    grid-area: Sidebar;
+    background-color: var(--SidebarColor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 5px;
+    gap: 10px;
+}
+
+#Sidebar>a {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: var(--SidebarIconsBackgorund);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 5px;
+    cursor: pointer;
+    transition: border-radius 0.2s ease-in-out;
+    overflow: hidden;
+}
+
+#Sidebar>a:hover, #Sidebar>a.Active {
+    border-radius: var(--AccentBorderRadius);
+}
+
+
+#Sidebar>a>img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#Content {
+    grid-area: Content;
+    border-radius: var(--AccentBorderRadius) 0 0 0;
+    background: var(--BackgroundColor);
+}

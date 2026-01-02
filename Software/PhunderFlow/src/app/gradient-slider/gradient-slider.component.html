@@ -1,0 +1,11 @@
+<input
+    type="range"
+    [min]="min"
+    [max]="max"
+    [step]="step"
+    [value]="value"
+    [disabled]="disabled"
+    [style.--GradientPoint]="GradientPercent"
+    [style.background]="'var(--GradientVariable)'"
+    (input)="onInput($event)"
+/>
